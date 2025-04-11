@@ -74,7 +74,7 @@ def assign_scripts(lines: Lines, height_threshold: float = 0.8, line_distance_th
             prev_span = span
 
 
-def get_spans(chars: Chars, superscript_height_threshold: float = 0.8, line_distance_threshold: float = 0.1) -> Spans:
+def get_spans(chars: Chars, superscript_height_threshold: float = 0.8, line_distance_threshold: float = 0.1, split_on_space: bool = False) -> Spans:
     spans: Spans = []
     span: Span = None
 
@@ -108,7 +108,11 @@ def get_spans(chars: Chars, superscript_height_threshold: float = 0.8, line_dist
             continue
 
         # we break on hyphenation or newline
-        if span['text'].endswith("\x02") or span['text'].endswith("\n"):
+        if (
+            span['text'].endswith("\x02") or 
+            span['text'].endswith("\n") or
+            (split_on_space and span['text'].endswith(" "))
+        ):
             span_break()
             continue
 
@@ -170,19 +174,26 @@ def get_blocks(lines: Lines) -> Blocks:
 
     x_diffs = []
     y_diffs = []
+    
+    line_texts = [" ".join(span["text"] for span in line["spans"]) for line in lines]
+    line_lengths = [len(text) for text in line_texts]
+    median_line_length = max(statistics.median(line_lengths), 2)
+    
     for i in range(len(lines) - 1):
+        if len(line_texts[i]) < median_line_length * 0.75:
+            continue
         prev_center = lines[i]["bbox"].center
         curr_center = lines[i + 1]["bbox"].center
         x_diffs.append(abs(curr_center[0] - prev_center[0]))
         y_diffs.append(abs(curr_center[1] - prev_center[1]))
 
-    median_x_gap = 0.1
+    median_x_gap = 0.5
     if x_diffs:
-        median_x_gap = statistics.median(x_diffs) or median_x_gap
-    median_y_gap = 0.1
+        median_x_gap = max(statistics.median(x_diffs), median_x_gap)
+    median_y_gap = 10.0
     if y_diffs:
-        median_y_gap = statistics.median(y_diffs) or median_y_gap
-
+        median_y_gap = max(statistics.median(y_diffs), median_y_gap)
+        
     tolerance_factor = 1.5
     allowed_x_gap = median_x_gap * tolerance_factor
     allowed_y_gap = median_y_gap * tolerance_factor

@@ -56,6 +56,9 @@ class Bbox:
         return self.bbox[3]
 
     def merge(self, other: Bbox) -> Bbox:
+        if other.height == 0:
+            return self
+        
         x_start = self.x_start if self.x_start < other.x_start else other.x_start
         y_start = self.y_start if self.y_start < other.y_start else other.y_start
         x_end = self.x_end if self.x_end > other.x_end else other.x_end

@@ -1,14 +1,14 @@
 [tool.poetry]
-name = "pdftext"
-version = "0.6.2"
-description = "Extract structured text from pdfs quickly"
-authors = ["Vik Paruchuri <vik.paruchuri@gmail.com>"]
+name = "chunking-pdftext"
+version = "0.6.2.post1"
+description = "Extract structured text from pdfs quickly. Adapted from https://github.com/VikParuchuri/pdftext"
+authors = ["tadashi <tuan@chunking.com>", "duc <duc@chunking.com>"]
 license = "Apache-2.0"
 readme = "README.md"
-repository = "https://github.com/VikParuchuri/pdftext"
+repository = "https://github.com/chunking-ai/pdftext"
 keywords = ["pdf", "text", "extraction"]
 packages = [
-    {include = "pdftext"}
+    {include = "pdftext/", to = "chunking_contrib"}
 ]
 
 [tool.poetry.dependencies]

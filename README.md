@@ -75,7 +75,7 @@ If the pdf is rotated, the bboxes will be relative to the rotated page (they're 
 Extract plain text:
 
 ```python
-from pdftext.extraction import plain_text_output
+from chunking_contrib.pdftext.extraction import plain_text_output
 
 text = plain_text_output(PDF_PATH, sort=False, hyphens=False, page_range=[1,2,3]) # Optional arguments explained above
 ```
@@ -83,7 +83,7 @@ text = plain_text_output(PDF_PATH, sort=False, hyphens=False, page_range=[1,2,3]
 Extract structured blocks and lines:
 
 ```python
-from pdftext.extraction import dictionary_output
+from chunking_contrib.pdftext.extraction import dictionary_output
 
 text = dictionary_output(PDF_PATH, sort=False, page_range=[1,2,3], keep_chars=False) # Optional arguments explained above
 ```
@@ -91,7 +91,7 @@ text = dictionary_output(PDF_PATH, sort=False, page_range=[1,2,3], keep_chars=Fa
 Extract text from table cells:
 
 ```python
-from pdftext.extraction import table_output
+from chunking_contrib.pdftext.extraction import table_output
 
 table_inputs = [
   # Each dictionary entry is a single page

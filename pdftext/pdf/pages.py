@@ -7,9 +7,9 @@ import unicodedata
 
 import pypdfium2 as pdfium
 
-from pdftext.pdf.chars import get_chars, deduplicate_chars
-from pdftext.pdf.utils import flatten
-from pdftext.schema import Blocks, Chars, Line, Lines, Pages, Span, Spans
+from .chars import get_chars, deduplicate_chars
+from .utils import flatten
+from ..schema import Blocks, Chars, Line, Lines, Pages, Span, Spans
 
 
 def is_math_symbol(char):

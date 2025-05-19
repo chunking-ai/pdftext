@@ -14,8 +14,8 @@ from rapidfuzz import fuzz
 import tabulate
 from tqdm import tqdm
 
-from pdftext.extraction import paginated_plain_text_output
-from pdftext.settings import settings
+from chunking_contrib.pdftext.extraction import paginated_plain_text_output
+from chunking_contrib.pdftext.settings import settings
 
 
 def pymupdf_inference(pdf_path):

@@ -1,4 +1,4 @@
-from pdftext.extraction import table_output
+from chunking_contrib.pdftext.extraction import table_output
 
 def test_table_extraction(pdf_path, pdf_doc):
     _table_extraction(pdf_path, pdf_doc)

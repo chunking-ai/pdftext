@@ -1,5 +1,5 @@
-from pdftext.extraction import paginated_plain_text_output, plain_text_output, dictionary_output
-from pdftext.schema import Pages
+from chunking_contrib.pdftext.extraction import paginated_plain_text_output, plain_text_output, dictionary_output
+from chunking_contrib.pdftext.schema import Pages
 
 
 def test_paginated_output(pdf_path, pdf_doc):

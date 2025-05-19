@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "chunking-pdftext"
-version = "0.6.2.post1"
+version = "0.6.2.post2"
 description = "Extract structured text from pdfs quickly. Adapted from https://github.com/VikParuchuri/pdftext"
 authors = ["tadashi <tuan@chunking.com>", "duc <duc@chunking.com>"]
 license = "Apache-2.0"

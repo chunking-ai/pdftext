@@ -1,8 +1,8 @@
 import unicodedata
 from typing import List
 
-from pdftext.pdf.utils import LINE_BREAKS, SPACES, TABS, WHITESPACE_CHARS
-from pdftext.schema import Page
+from .pdf.utils import LINE_BREAKS, SPACES, TABS, WHITESPACE_CHARS
+from .schema import Page
 
 LIGATURES = {
     "ﬀ": "ff",
